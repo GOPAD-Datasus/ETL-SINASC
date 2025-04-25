@@ -1,7 +1,6 @@
 {
-  "source": "opendatasus",
   "starting_year": 2012,
-  "ending_year": 2013,
+  "ending_year": 2023,
 
   "structure": "gopad",
   "drop_system": "yes",
