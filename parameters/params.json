@@ -1,12 +1,4 @@
 {
   "starting_year": 2012,
-  "ending_year": 2023,
-
-  "structure": "gopad",
-  "drop_system": "yes",
-  "drop_registry_office": "yes",
-  "merge_mother_education": "yes",
-  "merge_newborn_race": "yes",
-  "use_datetime_dtype": "yes",
-  "optimize_memory": "yes"
+  "ending_year": 2023
 }
