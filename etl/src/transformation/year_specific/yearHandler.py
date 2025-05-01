@@ -10,8 +10,8 @@ class YearHandler:
 
     def parse (self):
         """
-        Parse functions help treat mixed type and non-standard
-        values in columns
+        Parse functions (defined by 'parse_') help treat
+        mixed type and non-standard values in columns.
         Ex. parse_sexo in Handler2014, which changes
             'M' to 1, 'F' to 2 and 'I' to 0
         """

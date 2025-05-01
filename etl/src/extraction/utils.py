@@ -8,7 +8,8 @@ def get_urls () -> dict:
     change, altering it here can solve the problem.
 
     returns:
-        dict: Pair year and link for all desirable years
+        dict: Pair year (int) and link (str) for all desirable
+              years
     """
     return {
         2012: 'https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SINASC/csv/SINASC_2012.csv',
