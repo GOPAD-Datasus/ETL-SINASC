@@ -1,33 +1,16 @@
-# Params documentation
----
-## Extraction related
-### Source
-> Where the files will come from
-- ``opendatasus``: OpenDataSus website
-- ``datasus``: DataSus website
-  - If this is chosen, then files must be converted to csv first (may take longer)
-### Starting and ending year
-> Which interval to pull the data from
-- How it works: [``start`, ``end``[
-  - Ex. [``2012``, ``2013``[ -> only 2012
----
-## Transformation related
-### Structure
-> Defines the structure of the data
-- ``original``: (Default) Raw data from the source
-- ``gopad``: If this option is chosen, then all the changes below will be applied
-  - Same as manually setting ``yes`` for each item below 
-### Drop System
-> Each row has columns corresponding to the system used at the time of collection, this info is often not useful for analysis, so it can be safely removed
+# Params in ``parameters/params.json``
 
-Those columns are: CONTADOR, ORIGEM, NUMEROLOTE, ,VERSAOSIST, 
-DTRECEBIM, DIFDATA, DTCADASTRO
-- ``yes``: removes system columns
-- ``no``: (Default) doesn't remove system columns
-### Drop Registry Office
-> Each row has columns related to registry office, but not all rows go through it, leaving major info. gaps
+> ### **🛑Important:**
+> 
+> If years are outside the range $2012$ to $2023$, then additional
+> years' download url must be added to ``get_urls()``, inside
+> ``etl/src/extraction/utils.py``, and there must be a corresponding
+> ``year_N.py`` inside ``etl/src/transformation/year_specific``
+> containing a declaration of class ``HandlerN``
 
-Those columns are: CODCART, NUMREGCART, DTREGCART
-- ``yes``: removes said columns
-- ``no``: (Default) doesn't remove registry columns
-
+## ``starting_year``
+- Initial year to pull data from (inclusive)
+  - Ex. 2014 $\rightarrow$ Downloads DN2014.csv, DN2015.csv, ...
+## ``ending_year``
+- Final year to pull data from (also inclusive)
+  - Ex. 2020 $\rightarrow$ Downloads ... DN2019.csv, DN2020.csv
