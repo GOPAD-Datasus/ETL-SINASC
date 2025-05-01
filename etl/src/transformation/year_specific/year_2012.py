@@ -13,6 +13,8 @@ class Handler2012 (YearHandler):
 
         # RACACORN is the actual RACACOR
         # while RACACOR is the same as RACACORMAE
+        # See docs/transformations/RACACOR.ipynb
+        # for more details
         self.remove_cols('RACACOR')
         self.rename_cols({'RACACORN': 'RACACOR'})
 

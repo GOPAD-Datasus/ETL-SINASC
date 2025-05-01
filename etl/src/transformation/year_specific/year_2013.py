@@ -22,8 +22,10 @@ class Handler2013 (YearHandler):
         self.remove_cols(['CODCART', 'NUMREGCART', 'DTREGCART'])
         self.rename_cols({'contador': 'CONTADOR'})
 
-        # RACACORN is the same as RACACOR
-        # so we can delete it
+        # RACACORN is the same as RACACOR, so it
+        # can be safely deleted.
+        # See docs/transformations/RACACOR.ipynb
+        # for more details
         self.remove_cols('RACACORN')
 
         return self.df
