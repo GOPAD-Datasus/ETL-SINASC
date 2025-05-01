@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-
 from etl.src.extraction.utils import check_file_exists
 from etl.src.transformation.utils import *
 from etl.src.transformation.year_specific import apply_year_specific_changes
