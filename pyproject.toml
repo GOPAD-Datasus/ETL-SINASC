@@ -9,7 +9,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pandas",
-    "pyarrow"
+    "pyarrow",
+    "dask[dataframe] (>=2025.4.1,<2026.0.0)"
 ]
 
 
