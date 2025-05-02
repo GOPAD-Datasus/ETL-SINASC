@@ -20,5 +20,6 @@ class Handler2022 (YearHandler):
                               sep=sep)
 
         self.parse_cod_uf_natu()
+        self.remove_cols('DTRECORIGA')
 
         return self.df

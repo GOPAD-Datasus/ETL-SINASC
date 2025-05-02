@@ -17,9 +17,15 @@ class Handler2013 (YearHandler):
         self.df = pd.read_csv(self.url,
                               dtype=dtype)
 
+        self.add_cols(['TPROBSON', 'PARIDADE', 'TPFUNCRESP',
+                       'CONSPRENAT', 'DTDECLARAC', 'TPDOCRESP',
+                       'KOTELCHUCK'])
+
         self.parse_idade_pai()
         self.remove_cols('Unnamed: 0')
-        self.remove_cols(['CODCART', 'NUMREGCART', 'DTREGCART'])
+        self.remove_cols(['CODCART', 'NUMREGCART',
+                          'DTREGCART', 'CODMUNCART'])
+        self.remove_cols('DTRECORIG')
         self.rename_cols({'contador': 'CONTADOR'})
 
         # RACACORN is the same as RACACOR, so it

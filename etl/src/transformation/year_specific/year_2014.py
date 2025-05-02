@@ -31,5 +31,6 @@ class Handler2014 (YearHandler):
 
         self.parse_hora_nasc()
         self.parse_sexo()
+        self.remove_cols('DTRECORIGA')
 
         return self.df

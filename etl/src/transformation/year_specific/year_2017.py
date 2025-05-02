@@ -7,5 +7,9 @@ class Handler2017 (YearHandler):
     def pipeline(self):
         sep = ';'
 
-        return pd.read_csv(self.url,
-                           sep=sep)
+        self.df = pd.read_csv(self.url,
+                              sep=sep)
+
+        self.remove_cols('DTRECORIGA')
+
+        return self.df

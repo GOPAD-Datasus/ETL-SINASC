@@ -1,12 +1,28 @@
 from typing import Union
 
 import pandas as pd
+import numpy as np
 
 
 class YearHandler:
     def __init__ (self, url: str):
         self.url = url
         self.df = pd.DataFrame()
+
+    def add_cols (self, target: Union[list, str]):
+        """
+        Add the cols to the dataframe and fill them with
+        np.nan.
+
+        param:
+            target (list | str):
+        """
+        if type(target) == str:
+            self.df[target] = np.nan
+        if type(target) == list:
+            for i in target:
+                self.df[i] = np.nan
+
 
     def parse (self):
         """
