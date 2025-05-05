@@ -6,8 +6,8 @@ With focus on the files corresponding to the years 2012 to 2023.
 
 ## 📌 Overview
 - **Extract**: Data sourced from [OpenDataSUS](https://opendatasus.saude.gov.br/), and stored in ``temp/raw`` folder with .csv format.
-- **Transform**: Every year goes through year specific changes, has its columns standardized and dtypes optimized. At the end, it
-is stored inside ``temp/processed``
+- **Transform**: Every year goes through year specific changes, having its columns standardized and dtypes optimized. At the end, they
+are stored inside ``temp/processed``
 - **Load**: ⚠ Under construction (will include structural validation and database loading) ⚠.
   - The files created can be accessed at [DB-SINASC](https://github.com/GOPAD-Datasus/DB_SINASC)
 
