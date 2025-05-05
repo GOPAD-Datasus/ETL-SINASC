@@ -27,6 +27,7 @@ are stored inside ``temp/processed``
   - PostgreSQL database integration (optional)
   - Improved error handling 
 - Schema: Optimize final table structure
+- Docs: In-depth documentation
 
 ## ✨ Contributing
 
