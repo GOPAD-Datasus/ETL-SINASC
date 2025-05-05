@@ -1,5 +1,5 @@
-from etl.src.extraction.extract import extract
-from etl.src.transformation.transform import transform
+from etl.extraction.extract import extract
+from etl.transformation.transform import transform
 import json
 
 if __name__ == '__main__':
@@ -8,3 +8,4 @@ if __name__ == '__main__':
 
     extract(params)
     transform(params)
+    # load()

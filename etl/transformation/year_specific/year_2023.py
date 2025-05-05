@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 
-from etl.src.transformation.year_specific.yearHandler import YearHandler
+from etl.transformation.year_specific.yearHandler import YearHandler
 
 
-class Handler2018 (YearHandler):
+class Handler2023 (YearHandler):
     def parse_cod_uf_natu (self):
         target = 'CODUFNATU'
         self.df.loc[self.df[target] == 'nu',
@@ -20,6 +20,7 @@ class Handler2018 (YearHandler):
                               sep=sep)
 
         self.parse_cod_uf_natu()
-        self.remove_cols('DTRECORIGA')
+        self.remove_cols(['OPORT_DN', 'DTRECORIGA'])
+        self.rename_cols({'contador': 'CONTADOR'})
 
         return self.df

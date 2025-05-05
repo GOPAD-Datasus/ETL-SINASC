@@ -26,6 +26,7 @@ def get_urls () -> dict:
         2023: 'https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SINASC/csv/SINASC_2023.csv'
     }
 
+
 def make_temp_folder () -> None:
     """
     Creates the temporary file structure to hold raw and
@@ -46,6 +47,7 @@ def make_temp_folder () -> None:
     processed_folder = temp_folder + '/processed'
     if not os.path.exists(processed_folder):
         os.mkdir(processed_folder)
+
 
 def check_file_exists (path: str) -> bool:
     """

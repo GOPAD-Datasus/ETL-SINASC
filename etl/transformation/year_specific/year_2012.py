@@ -1,6 +1,6 @@
 import pandas as pd
 
-from etl.src.transformation.year_specific.yearHandler import YearHandler
+from etl.transformation.year_specific.yearHandler import YearHandler
 
 
 class Handler2012 (YearHandler):

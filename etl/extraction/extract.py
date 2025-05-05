@@ -1,7 +1,7 @@
 import urllib.error
 from urllib.request import urlretrieve
 
-from etl.src.extraction.utils import *
+from etl.extraction.utils import *
 
 
 def extract(params: dict) -> None:

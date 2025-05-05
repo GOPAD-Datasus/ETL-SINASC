@@ -1,7 +1,7 @@
 import importlib
 import pandas as pd
 
-import etl.src.transformation.year_specific.year_2012
+import etl.transformation.year_specific.year_2012
 
 
 def apply_year_specific_changes (url: str,

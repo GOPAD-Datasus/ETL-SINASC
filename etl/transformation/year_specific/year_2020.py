@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 
-from etl.src.transformation.year_specific.yearHandler import YearHandler
+from etl.transformation.year_specific.yearHandler import YearHandler
 
 
-class Handler2019 (YearHandler):
+class Handler2020 (YearHandler):
     def parse_cod_uf_natu (self):
         target = 'CODUFNATU'
         self.df.loc[self.df[target] == 'nu',

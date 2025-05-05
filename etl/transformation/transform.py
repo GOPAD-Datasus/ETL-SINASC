@@ -1,6 +1,6 @@
-from etl.src.extraction.utils import check_file_exists
-from etl.src.transformation.utils import *
-from etl.src.transformation.year_specific import apply_year_specific_changes
+from etl.extraction.utils import check_file_exists
+from etl.transformation.utils import *
+from etl.transformation.year_specific import apply_year_specific_changes
 
 
 def transform(params: dict) -> None:
@@ -19,8 +19,12 @@ def transform(params: dict) -> None:
 
         df = apply_year_specific_changes(input_file, year)
 
+        # Column specific changes
+        df['IDANOMAL'] = modify_idanomal(df['IDANOMAL'])
+
         # General changes
         df = remove_cols(df)
+        df = remove_ignored_values(df)
         df = optimize_dtypes(df)
 
         df.to_parquet(output_file,
