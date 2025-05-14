@@ -81,15 +81,9 @@ def optimize_dtypes (df: pd.DataFrame) -> pd.DataFrame:
 
 
 def modify_idanomal (series: pd.Series) -> np.array:
-    conditions = [
-        (series == 1),
-        (series == 2)
-    ]
 
-    choices = [
-        1, # Sim
-        0  # Nao
-    ]
+    conditions = [(series == 1), (series == 2)]
+    choices = [1,0]
 
     return np.select(conditions,
                      choices,
