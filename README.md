@@ -21,6 +21,11 @@ are stored inside ``temp/processed``
    poetry install
    ```
 
+## ⚙ Run
+```bash
+python __main__.py
+```
+
 ## 🔮 Future Features
 - Load Phase:
   - Structural validation checks 
