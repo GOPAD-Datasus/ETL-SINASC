@@ -18,7 +18,7 @@ def remove_cols (df: pd.DataFrame) -> pd.DataFrame:
     """
     list_ = ['CONTADOR', 'ORIGEM', 'NUMEROLOTE',
              'VERSAOSIST', 'DTRECEBIM', 'DIFDATA',
-             'DTCADASTRO']
+             'DTCADASTRO', 'CODPAISRES']
 
     return df.drop(list_, axis=1)
 
