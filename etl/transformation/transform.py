@@ -21,6 +21,9 @@ def transform(params: dict) -> None:
 
         # Column specific changes
         df['IDANOMAL'] = modify_idanomal(df['IDANOMAL'])
+        df['DTNASC'] = modify_dates(df['DTNASC'])
+        df['DTNASCMAE'] = modify_dates(df['DTNASCMAE'])
+        df['DTULTMENST'] = modify_dates(df['DTULTMENST'])
 
         # General changes
         df = remove_cols(df)

@@ -4,12 +4,25 @@ from etl.transformation.year_specific.yearHandler import YearHandler
 
 
 class Handler2012 (YearHandler):
+    def parse_dtnascmae (self):
+        target = 'DTNASCMAE'
+
+        self.df.loc[self.df[target] == '24120198',
+                    target] = '24121980'
+
+
     def pipeline(self) -> pd.DataFrame:
-        self.df = pd.read_csv(self.url)
+        dtype = {'DTNASC': str,
+                 'DTNASCMAE': str,
+                 'DTULTMENST': str}
+
+        self.df = pd.read_csv(self.url, dtype=dtype)
 
         self.add_cols(['PARIDADE', 'TPFUNCRESP', 'ESCMAEAGR1',
                        'DTDECLARAC', 'TPDOCRESP', 'TPNASCASSI',
                        'KOTELCHUCK', 'CODUFNATU'])
+
+        self.parse_dtnascmae()
 
         self.remove_cols('Unnamed: 0')
         self.remove_cols(['CODCART', 'NUMREGCART', 'DTREGCART'])

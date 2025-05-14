@@ -12,7 +12,10 @@ class Handler2018 (YearHandler):
         self.df[target] = self.df[target].astype(np.float32)
 
     def pipeline(self):
-        dtype = {'CODUFNATU': str}
+        dtype = {'CODUFNATU': str,
+                 'DTNASC': str,
+                 'DTNASCMAE': str,
+                 'DTULTMENST': str}
         sep = ';'
 
         self.df = pd.read_csv(self.url,

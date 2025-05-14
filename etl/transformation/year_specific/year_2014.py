@@ -22,7 +22,10 @@ class Handler2014 (YearHandler):
 
     def pipeline(self):
         dtype = {'HORANASC': str,
-                 'SEXO': str}
+                 'SEXO': str,
+                 'DTNASC': str,
+                 'DTNASCMAE': str,
+                 'DTULTMENST': str}
         sep = ';'
 
         self.df = pd.read_csv(self.url,

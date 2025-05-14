@@ -98,3 +98,22 @@ def modify_idanomal (series: pd.Series) -> np.array:
     return np.select(conditions,
                      choices,
                      default=0)
+
+
+def _parse_dates (x):
+    if type(x) == str:
+        area = x[4:6]
+
+        if area == '09':
+            return x[:4] + '19' + x[6:]
+        elif area == '00':
+            return x[:4] + '20' + x[6:]
+        else:
+            return x
+    else:
+        return x
+
+
+def modify_dates (series: pd.Series) -> pd.Series:
+    return pd.to_datetime(series.apply(_parse_dates),
+                          format='%d%m%Y')
