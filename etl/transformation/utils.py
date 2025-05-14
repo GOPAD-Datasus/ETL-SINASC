@@ -25,6 +25,11 @@ def remove_cols (df: pd.DataFrame) -> pd.DataFrame:
 
 def remove_ignored_values (df: pd.DataFrame) -> pd.DataFrame:
     values = {
+        'CODESTAB': 8888888,
+        'LOCNASC': 9,
+        'ESCMAE': 9,
+        'GRAVIDEZ': 9,
+        'APGAR1': 99,
         'APGAR5': 99,
         'CONSULTAS': 9,
         'GESTACAO': 9,
@@ -35,7 +40,18 @@ def remove_ignored_values (df: pd.DataFrame) -> pd.DataFrame:
         'PARTO': 9,
         'QTDFILVIVO': 99,
         'QTDFILMORT': 99,
-        'TPROBSON': 11
+        'TPROBSON': 11,
+        'PESO': 9999,
+        'CODMUNNATU': 999999,
+        'QTDGESTANT': 99,
+        'QTDPARTNOR': 99,
+        'QTDPARTCES': 99,
+        'IDADEPAI': 99,
+        'TPMETESTIM': 9,
+        'CONSPRENAT': 99,
+        'TPAPRESENT': 9,
+        'STTRABPART': 9,
+        'STCESPARTO': 9
     }
 
     df.replace(values, np.nan, inplace=True)
