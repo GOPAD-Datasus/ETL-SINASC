@@ -64,7 +64,7 @@ def optimize_dtypes (df: pd.DataFrame) -> pd.DataFrame:
     CSV files, used as extension for all SINASC files,
     can't hold info. about dtypes, and pandas defaults
     to 64 format. This function aims to reduce the
-    memory used
+    memory used by converting to 32 instead
     param:
         df (pd.DataFrame): DataFrame before with many
                            int64 and float64 as dtypes
@@ -81,6 +81,16 @@ def optimize_dtypes (df: pd.DataFrame) -> pd.DataFrame:
 
 
 def modify_idanomal (series: pd.Series) -> np.array:
+    """
+    IDANOMAL has a confusing structure, where 1
+    represents 'Yes' and 2 'No'. The boolean format
+    (0: No, 1: Yes) seems better for this scenario
+    This also treats null values, filling it with 0
+    param:
+        series (pd.Series): IDANOMAL column
+    return:
+        np.array: Updated column
+    """
 
     conditions = [(series == 1), (series == 2)]
     choices = [1,0]
