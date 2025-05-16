@@ -4,8 +4,7 @@ import pandas as pd
 import etl.transformation.year_specific.year_2012
 
 
-def apply_year_specific_changes (path: str,
-                                 year: int) -> pd.DataFrame:
+def handle_year (path: str, year: int) -> pd.DataFrame:
     """
     Calls each year's corresponding .py dynamically
     using getattr, simplifying the inclusion of more

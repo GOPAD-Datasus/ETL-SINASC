@@ -1,6 +1,6 @@
 from etl.extraction.utils import check_file_exists
-from etl.transformation.utils import *
-from etl.transformation.year_specific import apply_year_specific_changes
+from etl.transformation.year_specific import handle_year
+from etl.transformation.general_changes import HandlerGeneral
 
 
 def transform(params: dict) -> None:
@@ -17,18 +17,6 @@ def transform(params: dict) -> None:
         if check_file_exists (output_file):
             continue
 
-        df = apply_year_specific_changes(input_file, year)
-
-        # Column specific changes
-        df['IDANOMAL'] = modify_idanomal(df['IDANOMAL'])
-        df['DTNASC'] = modify_dates(df['DTNASC'])
-        df['DTNASCMAE'] = modify_dates(df['DTNASCMAE'])
-        df['DTULTMENST'] = modify_dates(df['DTULTMENST'])
-
-        # General changes
-        df = remove_cols(df)
-        df = remove_ignored_values(df)
-        df = optimize_dtypes(df)
-
-        df.to_parquet(output_file,
-                      compression='gzip')
+        HandlerGeneral(
+            handle_year(input_file, year)
+        ).pipeline(output_file)
