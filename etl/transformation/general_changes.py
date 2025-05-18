@@ -123,6 +123,27 @@ class HandlerGeneral:
                                          format='%d%m%Y')
 
 
+    def organize_columns(self):
+        order = ['IDADEMAE', 'DTNASCMAE', 'RACACORMAE',
+                 'ESTCIVMAE', 'QTDFILVIVO', 'QTDFILMORT',
+                 'QTDGESTANT', 'QTDPARTNOR', 'QTDPARTCES',
+                 'PARIDADE', 'ESCMAE', 'ESCMAE2010',
+                 'SERIESCMAE', 'ESCMAEAGR1', 'CODMUNNATU',
+                 'CODUFNATU', 'NATURALMAE', 'CODMUNRES',
+                 'CODOCUPMAE', 'DTULTMENST', 'SEMAGESTAC',
+                 'GESTACAO', 'GRAVIDEZ', 'CONSPRENAT',
+                 'CONSULTAS', 'MESPRENAT', 'KOTELCHUCK',
+                 'PARTO', 'TPAPRESENT', 'STTRABPART',
+                 'STCESPARTO', 'TPROBSON', 'TPNASCASSI',
+                 'DTNASC', 'HORANASC', 'APGAR1', 'APGAR5',
+                 'PESO', 'SEXO', 'RACACOR', 'IDANOMAL',
+                 'CODANOMAL', 'LOCNASC', 'CODESTAB',
+                 'CODMUNNASC', 'IDADEPAI', 'TPMETESTIM',
+                 'STDNEPIDEM', 'STDNNOVA']
+
+        self.df = self.df[order]
+
+
     def pipeline(self, output_file: str):
         self.modify_idanomal()
         self.modify_dates('DTNASC')
@@ -132,6 +153,7 @@ class HandlerGeneral:
         self.remove_cols()
         self.remove_ignored_values()
         self.optimize_dtypes()
+        self.organize_columns()
 
         self.df.to_parquet(output_file,
                            compression='gzip')
