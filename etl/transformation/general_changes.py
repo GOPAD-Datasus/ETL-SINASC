@@ -69,11 +69,12 @@ class HandlerGeneral:
             'QTDPARTNOR': 99,
             'QTDPARTCES': 99,
             'IDADEPAI':   99,
-            'TPMETESTIM': 9,
+            'TPMETESTIM': [8, 9],
             'CONSPRENAT': 99,
             'TPAPRESENT': 9,
             'STTRABPART': 9,
-            'STCESPARTO': 9
+            'STCESPARTO': 9,
+            'TPNASCASSI': 9
         }
 
         self.df.replace(values, np.nan, inplace=True)
