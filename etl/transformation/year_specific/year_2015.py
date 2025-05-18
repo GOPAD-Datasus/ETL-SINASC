@@ -14,7 +14,8 @@ class Handler2015 (YearHandler):
     def pipeline(self):
         dtype = {'DTNASC': str,
                  'DTNASCMAE': str,
-                 'DTULTMENST': str}
+                 'DTULTMENST': str,
+                 'HORANASC': str}
         sep = ';'
 
         self.df = pd.read_csv(self.url,
@@ -22,6 +23,8 @@ class Handler2015 (YearHandler):
                               sep=sep)
 
         self.parse_dtnascmae()
-        self.remove_cols('DTRECORIGA')
+
+        self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
+                          'TPFUNCRESP', 'TPDOCRESP'])
 
         return self.df

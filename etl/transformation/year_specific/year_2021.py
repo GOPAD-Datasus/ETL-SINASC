@@ -23,7 +23,8 @@ class Handler2021 (YearHandler):
         dtype = {'CODUFNATU': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
-                 'DTULTMENST': str}
+                 'DTULTMENST': str,
+                 'HORANASC': str}
         sep = ';'
 
         self.df = pd.read_csv(self.url,
@@ -32,6 +33,8 @@ class Handler2021 (YearHandler):
 
         self.parse_cod_uf_natu()
         self.parse_dtnascmae()
-        self.remove_cols('DTRECORIGA')
+
+        self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
+                          'TPFUNCRESP', 'TPDOCRESP'])
 
         return self.df

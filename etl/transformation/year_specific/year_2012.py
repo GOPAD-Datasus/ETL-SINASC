@@ -14,18 +14,20 @@ class Handler2012 (YearHandler):
     def pipeline(self) -> pd.DataFrame:
         dtype = {'DTNASC': str,
                  'DTNASCMAE': str,
-                 'DTULTMENST': str}
+                 'DTULTMENST': str,
+                 'HORANASC': str}
 
         self.df = pd.read_csv(self.url, dtype=dtype)
 
-        self.add_cols(['PARIDADE', 'TPFUNCRESP', 'ESCMAEAGR1',
-                       'DTDECLARAC', 'TPDOCRESP', 'TPNASCASSI',
-                       'KOTELCHUCK', 'CODUFNATU'])
+        self.add_cols(['PARIDADE', 'ESCMAEAGR1',
+                       'TPNASCASSI', 'KOTELCHUCK',
+                       'CODUFNATU'])
 
         self.parse_dtnascmae()
 
-        self.remove_cols('Unnamed: 0')
-        self.remove_cols(['CODCART', 'NUMREGCART', 'DTREGCART'])
+        self.remove_cols(['Unnamed: 0', 'CODCART',
+                          'NUMREGCART', 'DTREGCART'])
+
         self.rename_cols({'contador': 'CONTADOR'})
 
         # RACACORN is the actual RACACOR

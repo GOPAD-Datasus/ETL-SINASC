@@ -23,21 +23,23 @@ class Handler2013 (YearHandler):
         dtype = {'IDADEPAI': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
-                 'DTULTMENST': str}
+                 'DTULTMENST': str,
+                 'HORANASC': str}
 
         self.df = pd.read_csv(self.url,
                               dtype=dtype)
 
-        self.add_cols(['TPROBSON', 'PARIDADE', 'TPFUNCRESP',
-                       'CONSPRENAT', 'DTDECLARAC', 'TPDOCRESP',
-                       'KOTELCHUCK'])
+        self.add_cols(['TPROBSON', 'PARIDADE',
+                       'CONSPRENAT', 'KOTELCHUCK'])
 
         self.parse_dtnascmae()
         self.parse_idade_pai()
-        self.remove_cols('Unnamed: 0')
-        self.remove_cols(['CODCART', 'NUMREGCART',
+
+
+        self.remove_cols(['Unnamed: 0', 'DTRECORIG',
+                          'CODCART', 'NUMREGCART',
                           'DTREGCART', 'CODMUNCART'])
-        self.remove_cols('DTRECORIG')
+
         self.rename_cols({'contador': 'CONTADOR'})
 
         # RACACORN is the same as RACACOR, so it
