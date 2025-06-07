@@ -32,9 +32,11 @@ class Handler2013 (YearHandler):
         self.add_cols(['TPROBSON', 'PARIDADE',
                        'CONSPRENAT', 'KOTELCHUCK'])
 
+        self.handle_na('PARIDADE')
+        self.handle_na('KOTELCHUCK')
+
         self.parse_dtnascmae()
         self.parse_idade_pai()
-
 
         self.remove_cols(['Unnamed: 0', 'DTRECORIG',
                           'CODCART', 'NUMREGCART',

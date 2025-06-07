@@ -23,6 +23,10 @@ class Handler2012 (YearHandler):
                        'TPNASCASSI', 'KOTELCHUCK',
                        'CODUFNATU'])
 
+        self.handle_na('STDNNOVA')
+        self.handle_na('PARIDADE')
+        self.handle_na('KOTELCHUCK')
+
         self.parse_dtnascmae()
 
         self.remove_cols(['Unnamed: 0', 'CODCART',

@@ -24,6 +24,11 @@ class YearHandler:
                 self.df[i] = np.nan
 
 
+    def handle_na (self, target: str):
+        self.df.fillna({target: 0}, inplace=True)
+        self.df[target] = self.df[target].astype(int)
+
+
     def parse (self):
         """
         Parse functions (defined by 'parse_') help treat
@@ -33,6 +38,7 @@ class YearHandler:
         """
         pass
 
+
     def remove_cols (self, target: Union[list, str]):
         """
         Removes target columns from dataframe
@@ -41,6 +47,7 @@ class YearHandler:
         """
         self.df.drop(target, axis=1, inplace=True)
 
+
     def rename_cols (self, target_dict: dict):
         """
         Rename columns
@@ -48,6 +55,7 @@ class YearHandler:
             target_dict (dict): old name: new name
         """
         self.df.rename(target_dict, axis=1, inplace=True)
+
 
     def pipeline (self) -> pd.DataFrame:
         """

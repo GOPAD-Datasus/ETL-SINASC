@@ -9,8 +9,7 @@ class Handler2014 (YearHandler):
         target = 'HORANASC'
         table = str.maketrans('', '', ',/-?>')
         self.df[target] = (self.df[target]
-                           .str.translate(table)
-                           .astype(np.float32))
+                           .str.translate(table))
 
     def parse_sexo (self):
         target = 'SEXO'
@@ -31,6 +30,8 @@ class Handler2014 (YearHandler):
         self.df = pd.read_csv(self.url,
                               dtype=dtype,
                               sep=sep)
+
+        self.handle_na('STDNNOVA')
 
         self.parse_hora_nasc()
         self.parse_sexo()
