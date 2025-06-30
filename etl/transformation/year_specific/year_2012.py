@@ -11,7 +11,7 @@ class Handler2012 (YearHandler):
                     target] = '24121980'
 
 
-    def pipeline(self) -> pd.DataFrame:
+    def pipeline(self, output_file: str):
         dtype = {'DTNASC': str,
                  'DTNASCMAE': str,
                  'DTULTMENST': str,
@@ -41,5 +41,4 @@ class Handler2012 (YearHandler):
         self.remove_cols('RACACOR')
         self.rename_cols({'RACACORN': 'RACACOR'})
 
-        return self.df
-
+        super().pipeline(output_file)

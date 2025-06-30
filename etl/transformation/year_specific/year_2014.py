@@ -19,7 +19,7 @@ class Handler2014 (YearHandler):
                            .astype(np.int32))
 
 
-    def pipeline(self):
+    def pipeline(self, output_file: str):
         dtype = {'HORANASC': str,
                  'SEXO': str,
                  'DTNASC': str,
@@ -39,4 +39,4 @@ class Handler2014 (YearHandler):
         self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
                           'TPFUNCRESP', 'TPDOCRESP'])
 
-        return self.df
+        super().pipeline(output_file)

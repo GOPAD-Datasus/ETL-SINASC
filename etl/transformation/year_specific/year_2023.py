@@ -19,7 +19,7 @@ class Handler2023 (YearHandler):
                     target] = '04082000'
 
 
-    def pipeline(self):
+    def pipeline(self, output_file: str):
         dtype = {'CODUFNATU': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
@@ -39,4 +39,4 @@ class Handler2023 (YearHandler):
                           'TPDOCRESP'])
         self.rename_cols({'contador': 'CONTADOR'})
 
-        return self.df
+        super().pipeline(output_file)

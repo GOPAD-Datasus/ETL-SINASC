@@ -1,6 +1,5 @@
 from etl.extraction.utils import check_file_exists
 from etl.transformation.year_specific import handle_year
-from etl.transformation.general_changes import HandlerGeneral
 
 
 def transform(params: dict) -> None:
@@ -17,6 +16,4 @@ def transform(params: dict) -> None:
         if check_file_exists (output_file):
             continue
 
-        HandlerGeneral(
-            handle_year(input_file, year)
-        ).pipeline(output_file)
+        handle_year(input_file, year, output_file)

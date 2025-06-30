@@ -19,7 +19,7 @@ class Handler2013 (YearHandler):
         self.df[target] = self.df[target].astype(np.float32)
 
 
-    def pipeline (self) -> pd.DataFrame:
+    def pipeline(self, output_file: str):
         dtype = {'IDADEPAI': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
@@ -50,4 +50,4 @@ class Handler2013 (YearHandler):
         # for more details
         self.remove_cols('RACACORN')
 
-        return self.df
+        super().pipeline(output_file)

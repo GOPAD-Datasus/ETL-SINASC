@@ -1,10 +1,8 @@
 import importlib
 import pandas as pd
 
-import etl.transformation.year_specific.year_2012
 
-
-def handle_year (path: str, year: int) -> pd.DataFrame:
+def handle_year (path: str, year: int, output_path: str) -> pd.DataFrame:
     """
     Calls each year's corresponding .py dynamically
     using getattr, simplifying the inclusion of more
@@ -18,4 +16,4 @@ def handle_year (path: str, year: int) -> pd.DataFrame:
     handler = getattr(importlib.import_module(package),
                       f'Handler{year}')
 
-    return handler(path).pipeline()
+    return handler(path).pipeline(output_path)

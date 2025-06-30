@@ -19,7 +19,7 @@ class Handler2021 (YearHandler):
                     target] = '22011991'
 
 
-    def pipeline(self):
+    def pipeline(self, output_file: str):
         dtype = {'CODUFNATU': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
@@ -37,4 +37,4 @@ class Handler2021 (YearHandler):
         self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
                           'TPFUNCRESP', 'TPDOCRESP'])
 
-        return self.df
+        super().pipeline(output_file)

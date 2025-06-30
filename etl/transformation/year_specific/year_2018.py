@@ -11,7 +11,7 @@ class Handler2018 (YearHandler):
                     target] = np.nan
         self.df[target] = self.df[target].astype(np.float32)
 
-    def pipeline(self):
+    def pipeline(self, output_file: str):
         dtype = {'CODUFNATU': str,
                  'DTNASC': str,
                  'DTNASCMAE': str,
@@ -28,4 +28,4 @@ class Handler2018 (YearHandler):
         self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
                           'TPFUNCRESP', 'TPDOCRESP'])
 
-        return self.df
+        super().pipeline(output_file)
