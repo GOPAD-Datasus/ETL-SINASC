@@ -20,10 +20,16 @@ are stored inside ``temp/processed``
    ```bash
    poetry install
    ```
+   - Note: Poetry must be installed for the command above to work
 
 ## ⚙ Run
+- If your IDE supports in project virtual environments (like PyCharm), use:
 ```bash
-python __main__.py
+python main.py
+```
+- Else, add ``poetry run`` to the beginning of the command:
+```bash
+poetry run python main.py
 ```
 
 ## 🔮 Future Features
@@ -32,7 +38,6 @@ python __main__.py
   - PostgreSQL database integration (optional)
   - Improved error handling 
 - Schema: Optimize final table structure
-- Docs: In-depth documentation
 
 ## ✨ Contributing
 
