@@ -1,5 +1,4 @@
-from etl.extraction import extract
-from etl.transformation import transform
+from etl import extract, transform
 import json
 
 
