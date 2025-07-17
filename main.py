@@ -1,4 +1,4 @@
-from etl import extract, transform
+from etl import extract, transform, load
 import json
 
 
@@ -8,4 +8,4 @@ if __name__ == '__main__':
 
     extract(params)
     transform(params)
-    # load()
+    load(params)
