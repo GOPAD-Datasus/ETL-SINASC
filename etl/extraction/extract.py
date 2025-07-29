@@ -19,8 +19,8 @@ def extract(params: dict) -> None:
 
     dict_ = get_urls()
 
-    make_temp_folder()
-    raw_folder = 'temp/raw'
+    make_data_folder()
+    raw_folder = 'data/raw'
 
     for i in range(initial_year, final_year):
         source_link = dict_[i]

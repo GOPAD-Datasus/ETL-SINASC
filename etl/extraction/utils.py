@@ -27,24 +27,24 @@ def get_urls () -> dict:
     }
 
 
-def make_temp_folder () -> None:
+def make_data_folder () -> None:
     """
     Creates the temporary file structure to hold raw and
     processed files. The structure is defined below:
 
-    + temp: root folder
+    + data: root folder
       - raw: raw data extracted from source
       - processed: processed data
     """
-    temp_folder = '../temp'
-    if not os.path.exists(temp_folder):
-        os.mkdir(temp_folder)
+    data_folder = '../data'
+    if not os.path.exists(data_folder):
+        os.mkdir(data_folder)
 
-    raw_folder = temp_folder + '/raw'
+    raw_folder = data_folder + '/raw'
     if not os.path.exists(raw_folder):
         os.mkdir(raw_folder)
 
-    processed_folder = temp_folder + '/processed'
+    processed_folder = data_folder + '/processed'
     if not os.path.exists(processed_folder):
         os.mkdir(processed_folder)
 

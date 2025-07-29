@@ -7,7 +7,7 @@ import os
 class TestFileStructure (unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.file_fdr = '../temp/processed'
+        cls.file_fdr = '../data/processed'
         cls.list = [cls.file_fdr + '/' + f
                     for f in os.listdir(cls.file_fdr)
                     if f.endswith('.gzip')]

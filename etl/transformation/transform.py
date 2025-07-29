@@ -6,8 +6,8 @@ def transform(params: dict) -> None:
     initial_year = params['starting_year']
     final_year = params['ending_year'] + 1
 
-    pro_folder = 'temp/processed'
-    raw_folder = 'temp/raw'
+    pro_folder = 'data/processed'
+    raw_folder = 'data/raw'
 
     for year in range(initial_year, final_year):
         input_file = f'{raw_folder}/DN{year}.csv'
