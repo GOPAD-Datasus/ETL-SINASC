@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 
-from etl.transformation.year_specific.yearHandler import YearHandler
+from transformation.years import DefaultHandler
 
 
-class Handler2023 (YearHandler):
+class DN2019 (DefaultHandler):
     def parse_cod_uf_natu (self):
         target = 'CODUFNATU'
         self.df.loc[self.df[target] == 'nu',
@@ -15,8 +15,11 @@ class Handler2023 (YearHandler):
     def parse_dtnascmae (self):
         target = 'DTNASCMAE'
 
-        self.df.loc[self.df[target] == '04080200',
-                    target] = '04082000'
+        self.df.loc[self.df[target] == '14070100',
+                    target] = '14071999'
+
+        self.df.loc[self.df[target] == '19081086',
+                    target] = '19081986'
 
 
     def pipeline(self, output_file: str):
@@ -34,9 +37,7 @@ class Handler2023 (YearHandler):
         self.parse_cod_uf_natu()
         self.parse_dtnascmae()
 
-        self.remove_cols(['OPORT_DN', 'DTRECORIGA',
-                          'DTDECLARAC', 'TPFUNCRESP',
-                          'TPDOCRESP'])
-        self.rename_cols({'contador': 'CONTADOR'})
+        self.remove_cols(['DTRECORIGA', 'DTDECLARAC',
+                          'TPFUNCRESP', 'TPDOCRESP'])
 
         super().pipeline(output_file)

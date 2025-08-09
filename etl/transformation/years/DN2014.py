@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 
-from etl.transformation.year_specific.yearHandler import YearHandler
+from transformation.years import DefaultHandler
 
 
-class Handler2014 (YearHandler):
+class DN2014 (DefaultHandler):
     def parse_hora_nasc (self):
         target = 'HORANASC'
         table = str.maketrans('', '', ',/-?>')

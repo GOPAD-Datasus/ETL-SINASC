@@ -1,23 +1,21 @@
 import pandas as pd
 import numpy as np
 
-from etl.transformation.year_specific.yearHandler import YearHandler
+from transformation.years import DefaultHandler
 
 
-class Handler2013 (YearHandler):
+class DN2013 (DefaultHandler):
     def parse_dtnascmae (self):
         target = 'DTNASCMAE'
 
         self.df.loc[self.df[target] == '27091193',
                     target] = '27091993'
 
-
     def parse_idade_pai (self):
         target = 'IDADEPAI'
 
         self.df.loc[self.df[target] == '5D', target] = 50
         self.df[target] = self.df[target].astype(np.float32)
-
 
     def pipeline(self, output_file: str):
         dtype = {'IDADEPAI': str,

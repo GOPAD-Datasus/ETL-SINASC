@@ -1,15 +1,14 @@
 import pandas as pd
 
-from etl.transformation.year_specific.yearHandler import YearHandler
+from etl.transformation.years import DefaultHandler
 
 
-class Handler2012 (YearHandler):
+class DN2012 (DefaultHandler):
     def parse_dtnascmae (self):
         target = 'DTNASCMAE'
 
         self.df.loc[self.df[target] == '24120198',
                     target] = '24121980'
-
 
     def pipeline(self, output_file: str):
         dtype = {'DTNASC': str,

@@ -1,27 +1,18 @@
 import pandas as pd
-import numpy as np
 
-from etl.transformation.year_specific.yearHandler import YearHandler
-
-
-class Handler2021 (YearHandler):
-    def parse_cod_uf_natu (self):
-        target = 'CODUFNATU'
-        self.df.loc[self.df[target] == 'nu',
-                    target] = np.nan
-        self.df[target] = self.df[target].astype(np.float32)
+from transformation.years import DefaultHandler
 
 
+class DN2017 (DefaultHandler):
     def parse_dtnascmae (self):
         target = 'DTNASCMAE'
 
-        self.df.loc[self.df[target] == '22011199',
-                    target] = '22011991'
+        self.df.loc[self.df[target] == '20010199',
+                    target] = '20011990'
 
 
     def pipeline(self, output_file: str):
-        dtype = {'CODUFNATU': str,
-                 'DTNASC': str,
+        dtype = {'DTNASC': str,
                  'DTNASCMAE': str,
                  'DTULTMENST': str,
                  'HORANASC': str}
@@ -31,7 +22,6 @@ class Handler2021 (YearHandler):
                               dtype=dtype,
                               sep=sep)
 
-        self.parse_cod_uf_natu()
         self.parse_dtnascmae()
 
         self.remove_cols(['DTRECORIGA', 'DTDECLARAC',

@@ -1,9 +1,9 @@
 import pandas as pd
 
-from etl.transformation.year_specific.yearHandler import YearHandler
+from transformation.years import DefaultHandler
 
 
-class Handler2015 (YearHandler):
+class DN2015 (DefaultHandler):
     def parse_dtnascmae (self):
         target = 'DTNASCMAE'
 
