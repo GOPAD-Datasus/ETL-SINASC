@@ -1,18 +1,17 @@
 import os
+
+import pandas as pd
+import sqlalchemy.engine
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-import pandas as pd
 
 
-def load_data (url: str, params: dict) -> list:
-
-    return [f'{url}DN{x}.parquet.gzip'
-            for x in range(params['starting_year'],
-                           params['ending_year'] + 1)]
-
-
-def insert_data (df: pd.DataFrame):
+def create_db_engine () -> sqlalchemy.engine.Engine:
     load_dotenv()
+
+    required_env = ['user', 'password', 'host', 'port', 'db']
+    if any(os.getenv(var) is None for var in required_env):
+        raise EnvironmentError("Incomplete .env file")
 
     user = os.getenv('user')
     password = os.getenv('password')
@@ -23,8 +22,14 @@ def insert_data (df: pd.DataFrame):
     engine = create_engine(
         f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}")
 
-    with engine.connect() as conn:
-        with conn.begin():
-            df.to_sql('sinasc',
-                      con=conn,
-                      if_exists="append")
+    return engine
+
+
+def insert_data (conn: sqlalchemy.engine.Connection,
+                 df: pd.DataFrame,
+                 table_name: str):
+    df.to_sql(table_name,
+              con=conn,
+              chunksize=50_000,
+              if_exists="append",
+              method='multi')
