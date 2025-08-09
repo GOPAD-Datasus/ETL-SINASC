@@ -1,38 +1,36 @@
-import urllib.error
+import os
 from urllib.request import urlretrieve
 
-from etl.extraction.utils import *
+from etl.extraction.utils import get_urls, make_data_folder
+from utils import check_file_exists
 
 
-def extract(params: dict) -> None:
+def extract(prefix) -> None:
     """
-    Main extraction function. Downloads every file inside
-    the interval [starting_year, ending_year].
-    The source urls can be found inside get_urls() from
-    utils
-
-    param:
-        params: dict of parameters
+    Main extraction function. Downloads from every url
+    inside the files key from input.yaml file.
     """
-    initial_year = params['starting_year']
-    final_year = params['ending_year'] + 1
+    extension = '.csv'
 
-    dict_ = get_urls()
+    files = get_urls()
 
     make_data_folder()
-    raw_folder = 'data/raw'
 
-    for i in range(initial_year, final_year):
-        source_link = dict_[i]
-        output_file = f'{raw_folder}/DN{i}.csv'
+    base_dir = os.path.dirname(os.path.abspath(__name__))
+    raw_folder = os.path.join(base_dir, 'data', 'raw')
+
+    for year in files.keys():
+        source_link = files[year]
+        output_file = os.path.join(raw_folder,
+                                   f'{prefix}{year}{extension}')
 
         if not check_file_exists(output_file):
             try:
                 urlretrieve(source_link,
                             output_file)
-            except urllib.error.URLError:
-                error_ = (f'Url corresponding to year {i}'
-                          f' is wrong, try changing on'
-                          f' extraction/utils.py inside'
-                          f' get_urls()')
-                raise RuntimeWarning(error_)
+            except Exception as e:
+                error_msg = (
+                    f"Failed to download {year}: {e}\n"
+                    f"Please verify the url in input.yaml"
+                )
+                print(f'Warning: {error_msg}')
